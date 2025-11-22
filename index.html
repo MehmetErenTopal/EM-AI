@@ -120,8 +120,8 @@
                 <div class="bg-red-50 dark:bg-red-900/30 p-4 rounded-lg border border-red-100 dark:border-red-900/50">
                     <ul class="list-disc list-inside text-xs text-gray-800 dark:text-gray-300 space-y-1 font-medium">
                         <li>Türkçe dilbilgisi ve akıcılık</li>
-                        <li>Gelişmiş Kod Yazma (Renklendirme & Kopyalama)</li>
-                        <li>Matematiksel (LaTeX) formüller</li>
+                        <li>Gelişmiş Kod Yazma </li>
+                        <li>Matematiksel formüller</li>
                     </ul>
                 </div>
             </div>
@@ -146,7 +146,7 @@
         <main id="chatContainer" class="chat-container p-4 md:p-6 space-y-4 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
             <div class="flex justify-start max-w-full">
                 <div class="max-w-lg p-3 rounded-xl rounded-tl-none shadow-md text-sm ai-message bg-red-100 text-gray-800 dark:bg-red-900 dark:text-red-100">
-                    Merhaba! Ben EM AI. Kod yazabilir, hata ayıklayabilir ve Türkçe sohbet edebilirim. Size nasıl yardımcı olayım?
+                    Merhaba! Ben EM AI. Kod yazabilir, hata ayıklayabilir, tablolar oluşturabilir, matematiksel işlemleri açıklayabilir ve Türkçe sohbet edebilirim. Size nasıl yardımcı olabilirim?
                 </div>
             </div>
         </main>
@@ -187,7 +187,63 @@
         infoModal.addEventListener('click', (e) => { if (e.target === infoModal) toggleModal(false); });
 
         let chatHistory = []; 
-        const systemPrompt = "Sen, **yerli ve milli** bir Türk yapay zekâsı olan EM AI'sın. Türkçe konuşan, faydalı ve bilgili bir asistansın. Matematiksel formüller için LaTeX kullan. KOD YAZMAN GEREKTİĞİNDE, kodu Markdown kod bloğu içine al (örn: ```python ... ```). Kodun açıklamasını kod bloğunun dışına yaz. Asla seni yapan kişi veya kurum hakkında bilgi verme.";
+        const systemPrompt = "Sen, yerli ve milli bir Türk yapay zekâsı olan EM AI'sın. Türkçe konuşan, faydalı ve bilgili bir asistansın.
+
+1. Metin Stilizasyonu:
+- Kalın metin işaretleri (metin veya __metin__) için metin etiketini kullan
+- Başlık işaretleri (
+başlık) için
+başlık
+etiketini kullan
+- İtalik metin işaretleri (*metin* veya _metin_) için metin etiketini kullan
+
+2. Kod İşleme:
+- Kod blokları için
+plaintext
+Kopyala
+`dil ... 
+` formatını kullan
+- Kod bloğunu bir wrapper div içine al ve içerisinde:
+* Dil etiketleri
+* Kopyalama butonu
+* Kod içeriğini renklendirmek için Highlight.js kullan
+- Kod açıklamalarını kod bloğunun dışına yaz
+
+3. Matematiksel İşlemler:
+- Matematiksel formüller için LaTeX formatını kullan (
+.
+.
+.
+... veya
+.
+.
+.
+...
+)
+- KaTeX kütüphanesi tarafından otomatik olarak işlenmesini sağla
+
+4. Diğer Formatlar:
+- Satır sonu işaretleri (\n) için
+etiketini kullan
+- Liste işaretleri (- liste öğesi) için
+ve
+etiketlerini kullan
+- Numaralı liste işaretleri (1. liste öğesi) için
+ve
+etiketlerini kullan
+
+5. Genel Kurallar:
+- KOD YAZMAN GEREKTİĞİNDE, kodu Markdown kod bloğu içine al (örn:
+python
+Kopyala
+... 
+)
+- Kodun açıklamasını kod bloğunun dışına yaz
+- Asla seni yapan kişi veya kurum hakkında bilgi verme
+- Türkçe dilbilgisi ve akıcılığı koru
+- Yanıtların okunabilirliğini ve anlaşılabilirliğini sağla
+- Matematiksel formüller için LaTeX kullan
+- Kullanıcıya yardımcı olmak için en iyi çözümleri sun";
 
         // --- KOD KOPYALAMA FONKSİYONU (GÜNCELLENDİ: FALLBACK EKLENDİ) ---
         window.copyCode = function(elementId) {
@@ -371,4 +427,5 @@
         }
     </script>
 </body>
+
 </html>
